@@ -4,9 +4,9 @@
     <property name="jmeter.home" value="/usr/local/jmeter/apache-jmeter-5.4.1" />
     <property name="report.title" value="JMeter接口测试报告"/>
     <!-- jmeter生成jtl格式的结果报告的路径--> 
-    <property name="jmeter.result.jtl.dir" value="/usr/local/jmeter_auto/report/jtl" />
+    <property name="jmeter.result.jtl.dir" value="/root/.jenkins/workspace/jmeter_with_git/report/jtl" />
     <!-- jmeter生成html格式的结果报告的路径-->
-    <property name="jmeter.result.html.dir" value="/usr/local/jmeter_auto/report/html" />
+    <property name="jmeter.result.html.dir" value="/root/.jenkins/workspace/jmeter_with_git/report/html" />
     <!-- 生成的报告的前缀-->  
     <property name="ReportName" value="详细报告" />
 	<tstamp> <format property="time" pattern="YYYYMMDD HHmmss" /></tstamp>
@@ -14,8 +14,8 @@
     <property name="jmeter.result.htmlName" value="${jmeter.result.html.dir}/${ReportName}.html" />
     <!-- Ant任务：clean，任务目的：清理旧的报告文件生成 -->
     <target name="clean">
-        <delete dir="/usr/local/jmeter_auto/report/jtl" />
-        <delete dir="/usr/local/jmeter_auto/report/html" />
+        <delete dir="/root/.jenkins/workspace/jmeter_with_git/report/jtl" />
+        <delete dir="/root/.jenkins/workspace/jmeter_with_git/report/html" />
     </target>
     <target name="run">
 		<antcall target="clean" />
@@ -27,7 +27,7 @@
         <taskdef name="jmeter" classname="org.programmerplanet.ant.taskdefs.jmeter.JMeterTask" />
         <jmeter jmeterhome="${jmeter.home}" resultlog="${jmeter.result.jtlName}">
             <!-- 声明要运行的脚本"*.jmx"指包含此目录下的所有jmeter脚本-->
-            <testplans dir="/usr/local/jmeter_auto/script" includes="*.jmx" />
+            <testplans dir="/root/.jenkins/workspace/jmeter_with_git/script" includes="*.jmx" />
             
             <property name="jmeter.save.saveservice.output_format" value="xml"/>
         </jmeter>
